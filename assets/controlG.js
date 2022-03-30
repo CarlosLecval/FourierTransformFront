@@ -1,13 +1,28 @@
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
 $(document).ready(function () {
-    // var imagen = document.getElementById('img_r');
+    let imageName = getCookie("imageName");
     var imagen = new Image();
-    imagen.src = 'https://fourierbucket.s3.us-west-2.amazonaws.com/bg_image_b_7e2feae7-5e79-41fc-a8be-b2a83075a12b.png';
+    imagen.src = 'https://fourierbucket.s3.us-west-2.amazonaws.com/bg_image_b_' + imageName + '.png';
     var clic = false;
     var xCoord, yCoord = "";
     var canvas = document.getElementById("gameCanvas");
-    canvas.height = imagen.height;
-    canvas.width = imagen.width;
+    // canvas.height = imagen.height;
+    // canvas.width = imagen.width;
     var cntx = canvas.getContext("2d");
     cntx.strokeStyle = "black";
     cntx.lineWidth = 10;
