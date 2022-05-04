@@ -48,6 +48,7 @@ $(document).ready(function () {
     $("#gameCanvasB").mousemove(function (canvas) {
         if (clic == true) {
             cntx.beginPath();
+            cntx.lineWidth = 3;
             cntx.moveTo(canvas.pageX - this.offsetLeft, canvas.pageY - this.offsetTop);
             cntx.lineTo(xCoord, yCoord);
             cntx.stroke();
